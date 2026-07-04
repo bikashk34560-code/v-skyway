@@ -57,7 +57,7 @@ class BossAccessibilityService : AccessibilityService() {
             val desc = node.contentDescription?.toString()?.replace("\n", " ") ?: "null"
             
             // Format: [NodeHash] Type:Button Text:'...' Desc:'...' Clickable:true Bounds:[x1,y1,x2,y2]
-            val elementInfo = "[ID:${node.hashCode()}] Class:${node.className?.substringAfterLast(".")} | Text:'$text' | Desc:'$desc' | Clickable:${node.isClickable} | Editable:${node.isEditable} | Bounds:[${rect.left},${rect.top},${rect.right},${rect.bottom}]"
+            val elementInfo = "[ID:${node.hashCode()}] Class:${node.className?.toString()?.substringAfterLast(".")} | Text:'$text' | Desc:'$desc' | Clickable:${node.isClickable} | Editable:${node.isEditable} | Bounds:[${rect.left},${rect.top},${rect.right},${rect.bottom}]"
             
             list.add(elementInfo)
         }
@@ -102,7 +102,7 @@ class BossAccessibilityService : AccessibilityService() {
         val rootNode = rootInActiveWindow ?: return false
         val targetNode = findNodeByHash(rootNode, targetHash)
         
-        if (targetNode != null && (targetNode.isEditable || targetNode.className?.contains("EditText") == true)) {
+        if (targetNode != null && (targetNode.isEditable || targetNode.className?.toString()?.contains("EditText") == true)) {
             val arguments = Bundle().apply {
                 putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, textToType)
             }
