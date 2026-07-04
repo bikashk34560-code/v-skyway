@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">v. Skyway</string>
+    <string name="accessibility_description">Skyway AI requires Accessibility Service to read the active screen and perform automated clicks/typing as requested by the user. It functions as a digital proxy for the OS.</string>
+</resources>
